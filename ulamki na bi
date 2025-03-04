@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+struct wymierna {
+	int calk;
+	int licz;
+};
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	int licz=1;
+	int mian=10;
+	int i;
+	string s="0 ";
+	bool okres=false;
+	wymierna w;
+	vector<wymierna> Tab;
+	while(!okres) {
+		licz=licz*2;
+		w.calk=licz/mian;
+		licz=licz%mian;
+		w.licz=licz;
+		i=0;
+		cout<<licz<<" "<<w.calk<<endl;
+		while(i<Tab.size() && !okres) {
+			if(Tab[i].calk==w.calk && Tab[i].licz==w.licz) okres=true;
+			else i++;
+			
+		} 
+		if(!okres)Tab.push_back(w);
+		
+	}
+	for (int j=0; j<Tab.size(); j++) {
+		if(j==i)s=s+"(";
+		if(Tab[j].calk==1)s=s+"1";
+		else s=s+"0";
+		
+	}
+	s=s+")";
+	cout<<s;
+	return 0;
+}

@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+string dectobin (int a){
+	int b;
+	string wynik;
+	char znak;
+	
+	while(a>0){
+		b=a%2;
+		a=a/2;
+		znak=b+48;
+		wynik=znak+wynik;
+	}
+	return wynik;
+}
+int potega(int liczba, int wyk) {
+	int wynik=1;
+	for(int a=1; a<=wyk; a++) {
+		wynik=wynik*liczba;
+		
+	}
+	return wynik;
+}
+int main(int argc, char** argv) {
+	int liczba=3;
+	int p=13;
+	int pot=0;
+	int podn;
+	int wynik=1;
+	string bin=dectobin(p);
+	int dl=bin.length();
+	for(int a=0; a<dl; a++) {
+		char znak=bin[a];
+		if(znak=='1') {
+			pot=dl-a-1;
+			podn=potega(2,pot);
+			cout<<podn<<endl;
+			cout<<potega(liczba,podn)<<endl;
+			wynik=wynik*potega(liczba,podn);
+			
+		}
+	}
+	cout<<wynik;
+	return 0;
+}
